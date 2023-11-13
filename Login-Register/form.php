@@ -4,24 +4,21 @@ $username = "root";
 $password = "";
 $database = "university";
 
-// Create connection
 $conn = new mysqli($host, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+    
     $name = $_POST["fname"];
     $id = $_POST["id"];
     $dateofbirth = $_POST["birth"];
     $email = $_POST["email"];
     $department = $_POST["department"];
     $gender = isset($_POST["male"]) ? "Male" : (isset($_POST["female"]) ? "Female" : "");
-    $photo = $_POST["image"]; // Note: Handle file uploads properly, this is just a placeholder
+    $photo = $_POST["image"];
     $textarea = $_POST["textarea"];
 
     // Insert data into the database
@@ -34,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Close the connection
 $conn->close();
 ?>
 
